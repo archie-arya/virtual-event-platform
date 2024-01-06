@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
 import axios from '../../services/api';
+import { useAuth } from '../../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
     email: '',
     password: '',
   });
+
+  const { login } = useAuth();
+
+  const navigate = useNavigate();
+
 
   const handleInputChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
@@ -15,11 +23,26 @@ const Login = () => {
     try {
       const response = await axios.post('/auth/login', loginData);
       console.log('Login successful:', response.data);
-      // Store the token in state or localStorage for future authenticated requests.
+  
+      // Call the login function from the AuthContext to update the user state
+      login(response.data);
+  
+      // Redirect to the dashboard (update this route based on your setup)
+      navigate('/dashboard');
     } catch (error) {
-      console.error('Login failed:', error.response.data);
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        console.error('Login failed:', error.response.data);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('No response received');
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error('Error setting up the request:', error.message);
+      }
     }
   };
+  
 
   return (
     <div>
