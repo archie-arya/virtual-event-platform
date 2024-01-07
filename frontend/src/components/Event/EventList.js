@@ -4,25 +4,40 @@ import styled from 'styled-components';
 import axios from '../../services/api';
 
 const EventBox = styled.div`
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin: 10px 0;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 10px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   h3 {
+    color: #333;
     margin-bottom: 10px;
+  }
+
+  p {
+    color: #666;
+    margin-top: 0;
   }
 
   button {
     background-color: #4caf50;
     color: white;
     border: none;
-    padding: 10px;
+    padding: 8px;
     border-radius: 5px;
     cursor: pointer;
   }
 `;
+
+
 
 const EventList = () => {
   const [events, setEvents] = useState([]);
@@ -45,7 +60,7 @@ const EventList = () => {
     try {
       // Simulate joining event on the frontend
       console.log(`Joined event with ID: ${eventId}`);
-      // You can add further logic to update the backend based on your requirements
+      // can add further logic to update the backend based on your requirements
     } catch (error) {
       console.error('Failed to join event:', error.message);
     }

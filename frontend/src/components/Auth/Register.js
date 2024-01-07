@@ -1,6 +1,7 @@
 // src/components/Auth/Register.js
 import React, { useState } from 'react';
 import axios from '../../services/api';
+import './Login.css'
 
 const Register = () => {
   const [userData, setUserData] = useState({
@@ -24,12 +25,12 @@ const Register = () => {
       }
     } catch (error) {
       console.error('Registration failed:', error.message);
-      // Optionally, you can also handle specific error cases here
+      // also handle specific error cases here
     }
   };
 
   return (
-    <div>
+    <div className = "login-container">
       <h2>Register</h2>
       <form>
         <label>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from '../../services/api';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
-
+import './Login.css'; // Import the CSS file
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -45,7 +45,7 @@ const Login = () => {
   
 
   return (
-    <div>
+    <div className = "login-container">
       <h2>Login</h2>
       <form>
         <label>

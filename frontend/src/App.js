@@ -5,6 +5,8 @@ import Register from './components/Auth/Register';
 import Login from './components/Auth/Login';
 import UserDashboard from './components/UserDashboard';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
+import './styles.css'; // Import the CSS file
+
 
 const AuthContext = createContext();
 
