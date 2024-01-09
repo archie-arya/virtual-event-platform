@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import axios from '../../services/api';
-
+import { Card, Button } from 'react-bootstrap'; // Import React Bootstrap components
+/*
 const EventBox = styled.div`
   background-color: #f8f8f8;
   border: 1px solid #ddd;
@@ -36,7 +37,7 @@ const EventBox = styled.div`
     cursor: pointer;
   }
 `;
-
+*/
 
 
 const EventList = () => {
@@ -70,14 +71,16 @@ const EventList = () => {
     <div>
       <h2>Event List</h2>
       {events.map((event) => (
-        <EventBox key={event._id}>
-          <h3>{event.title}</h3>
-          <p>{event.description}</p>
-          {/* Add more details as needed */}
-          <button type="button" onClick={() => joinEvent(event._id)}>
-            Join Event
-          </button>
-        </EventBox>
+        <Card key={event._id} style={{ width: '18rem', marginBottom: '20px' }}>
+          <Card.Body>
+            <Card.Title>{event.title}</Card.Title>
+            <Card.Text>{event.description}</Card.Text>
+            {/* Add more details as needed */}
+            <Button variant="success" onClick={() => joinEvent(event._id)}>
+              Join Event
+            </Button>
+          </Card.Body>
+        </Card>
       ))}
     </div>
   );
