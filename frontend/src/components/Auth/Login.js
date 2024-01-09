@@ -25,6 +25,7 @@ const LoginForm = styled.form`
   box-shadow: 0 32px 64px rgba(0, 0, 0, 0.2);
 
   h2 {
+    font-family : 'Jura' ;
     margin-bottom: 5px;
     text-align: center;
     text-shadow: 0 4px 16px #fff;
@@ -33,6 +34,7 @@ const LoginForm = styled.form`
   }
 
   label {
+    font-family : 'Jura' ;
     text-align: left;
     padding-bottom: 2px;
   }

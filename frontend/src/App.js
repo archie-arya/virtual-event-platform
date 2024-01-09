@@ -19,6 +19,7 @@ const AppContainer = styled.div`
   align-items: center;
 
   h1 {
+    font-family = 'Jura';
     text-align: center;
     color: #fff;
     text-shadow: 0 4px 16px #fff;
@@ -28,6 +29,7 @@ const AppContainer = styled.div`
 
   nav {
     ul {
+      font-family : 'Jura' ;
       list-style: none;
       padding: 0;
       display: flex;
