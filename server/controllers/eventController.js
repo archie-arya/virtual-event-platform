@@ -64,9 +64,37 @@ const deleteEvent = async (req, res) => {
   }
 };
 
+const joinEvent = async (req, res) => {
+  const { eventId } = req.params;
+  const { userId } = req.body;
+
+  try {
+    const event = await Event.findById(eventId);
+
+    if (!event) {
+      return res.status(404).json({ message: 'Event not found' });
+    }
+
+    // Check if the user is already attending
+    if (event.attendees.includes(userId)) {
+      return res.status(400).json({ message: 'User is already attending this event' });
+    }
+
+    // Add user to attendees
+    event.attendees.push(userId);
+    await event.save();
+
+    res.status(200).json({ message: 'User joined the event successfully' });
+  } catch (error) {
+    console.error('Error joining event:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
+
 module.exports = {
   getEvents,
   createEvent,
   updateEvent,
   deleteEvent,
+  joinEvent,
 };
